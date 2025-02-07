@@ -72,7 +72,7 @@ export const CommentForm = ({
         return;
       }
 
-      console.log(`Total comments found: ${comments.length}`);
+      console.log('Total comments found: ${comments.length}');
       console.log('All comments:', comments);
 
       const commentsText = comments
@@ -82,19 +82,9 @@ export const CommentForm = ({
       console.log('Full comments text being sent to Bedrock:', commentsText);
       console.log('Number of characters in prompt:', commentsText.length);
 
-      const prompt = `📊 Summarize the following comments in a structured format:
+      const prompt = `📊 Summarize the following comments and explain how to improve the content:
 
-      ${commentsText}
-
-      Format your response as follows:
-
-      📚 Summary:
-      [Provide a concise summary of the overall sentiment and main points]
-
-      ⭐️ Overall Score : [_/5]
-
-      💫 Key Reason:
-      [Main reason for the score]`;
+      ${commentsText}`;
 
       const response = await askBedrock(prompt);
       console.log("Bedrock response:", response);
